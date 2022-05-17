@@ -43,5 +43,16 @@ def update_board(game_board,user_choice ,player):
     return game_board
 
 
+def game():
+    game_list = [''] * 9
+    gameover= False
+    player = 'X'
+    while not gameover:
+        choice = user_input()
+        game_list = update_board(game_list, choice, player)
+        
+        
+
+game()
 
 
