@@ -27,20 +27,62 @@ def update_board(game_board,user_choice ,player):
     elif user_choice == 3:
         game_board[2] = player
     elif user_choice == 4:
-        game_board[1] = player
+        game_board[3] = player
     elif user_choice == 5:
-        game_board[2] = player
+        game_board[4] = player
     elif user_choice == 6:
-        game_board[1] = player
+        game_board[5] = player
     elif user_choice == 7:
-        game_board[2] = player
+        game_board[6] = player
     elif user_choice == 8:
-        game_board[1] = player
+        game_board[7] = player
     elif user_choice == 9:
-        game_board[2] = player
+        game_board[8] = player
    
 
     return game_board
+
+def check_winner(game_list):
+    if all(game_list):
+        print("TIE!")
+        return True
+
+    if game_list[0] and game_list[1] and game_list[2]:
+        if game_list[0] == game_list[1] == game_list[2]:
+            print("WINNER!")
+            return True
+
+    elif game_list[3] and game_list[4] and game_list[5]:
+        if game_list[3] == game_list[4] == game_list[5]:
+            print("WINNER!")
+            return True
+    
+    elif game_list[6] and game_list[7] and game_list[8]:
+        if game_list[6] == game_list[7] == game_list[8]:
+            print("WINNER!")
+            return True
+
+    elif game_list[0] and game_list[3] and game_list[6]:
+        if game_list[0] == game_list[3] == game_list[6]:
+            print("WINNER!")
+            return True
+
+    elif game_list[1] and game_list[4] and game_list[7]:
+        if game_list[1] == game_list[4] == game_list[7]:
+            print("WINNER!")
+            return True
+    
+    elif game_list[2] and game_list[5] and game_list[8]:
+        if game_list[2] == game_list[5] == game_list[8]:
+            print("WINNER!")
+            return True
+
+    elif game_list[0] and game_list[4] and game_list[8]:
+        if game_list[0] == game_list[4] == game_list[8]:
+            print("WINNER!")
+            return True
+    
+    return False
 
 
 def game():
@@ -50,7 +92,8 @@ def game():
     while not gameover:
         choice = user_input()
         game_list = update_board(game_list, choice, player)
-        
+        print(game_list)
+        gameover = check_winner(game_list)    
         
 
 game()
