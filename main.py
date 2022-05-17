@@ -18,36 +18,30 @@ def user_input():
 
 
 
-def display(row1,row2,row3):
-    print(row1)
-    print(row2)
-    print(row3)
-
-
-def update_board(user_choice):
-    row1 = ['', '', '']
-    row2 = ['', '', '']
-    row3 = ['', '', '']
+def update_board(game_board,user_choice ,player):
 
     if user_choice == 1:
-        row3[0] = 'X'
+        game_board[0] = player
     elif user_choice == 2:
-        row3[1] = 'X'
+        game_board[1] = player
     elif user_choice == 3:
-        row3[2] = 'X'
+        game_board[2] = player
     elif user_choice == 4:
-        row2[1] = 'X'
+        game_board[1] = player
     elif user_choice == 5:
-        row2[2] = 'X'
+        game_board[2] = player
     elif user_choice == 6:
-        row2[1] = 'X'
+        game_board[1] = player
     elif user_choice == 7:
-        row1[2] = 'X'
+        game_board[2] = player
     elif user_choice == 8:
-        row1[1] = 'X'
+        game_board[1] = player
     elif user_choice == 9:
-        row1[2] = 'X'
-    display(row1, row2, row3)
+        game_board[2] = player
+   
+
+    return game_board
+
 
 
 
