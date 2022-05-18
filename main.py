@@ -91,6 +91,11 @@ def check_winner(game_list):
     
     return False
 
+def display(game_list):
+    print([game_list[6] , game_list[7] , game_list[8]])
+    print([game_list[3] , game_list[4] , game_list[5]])
+    print([game_list[0] , game_list[1] , game_list[2]])
+
 
 def game():
     game_list = [''] * 9
@@ -99,7 +104,7 @@ def game():
     while not gameover:
         choice = user_input()
         game_list = update_board(game_list, choice, player)
-        print(game_list)
+        display(game_list)
         gameover = check_winner(game_list)    
         
 
