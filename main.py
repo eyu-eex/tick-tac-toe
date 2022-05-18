@@ -1,5 +1,5 @@
 def user_input():
-
+    '''Accepts user input within the range of (1-9).'''
     choice = ''
     acceptable_range = range(1,10)
     within_range = False
@@ -19,7 +19,7 @@ def user_input():
 
 
 def update_board(game_board,user_choice ,player):
-
+    '''Takes the game list and user choice to update the game list.'''
     if user_choice == 1:
         game_board[0] = player
     elif user_choice == 2:
@@ -43,6 +43,8 @@ def update_board(game_board,user_choice ,player):
     return game_board
 
 def check_winner(game_list):
+    """Checks whether all postions are filled in the board in which case its a tie. Otherwise, Checks if the cells are empty then checks if they are the same.
+    """
     if all(game_list):
         print("TIE!")
         return True
@@ -79,6 +81,11 @@ def check_winner(game_list):
 
     elif game_list[0] and game_list[4] and game_list[8]:
         if game_list[0] == game_list[4] == game_list[8]:
+            print("WINNER!")
+            return True
+    
+    elif game_list[2] and game_list[4] and game_list[6]:
+        if game_list[2] == game_list[4] == game_list[6]:
             print("WINNER!")
             return True
     
