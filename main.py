@@ -106,8 +106,10 @@ def game():
         game_list = update_board(game_list, choice, player)
         display(game_list)
         gameover = check_winner(game_list)    
-        
-
+    replay = input("Do you wwant to play again? (Y/N)? ")
+    if replay == 'Y':
+        game()
+    
 game()
 
 
