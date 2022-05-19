@@ -36,54 +36,23 @@ def update_board(game_board,marker ,position):
     '''Takes the game list and user choice to update the game board.'''
     game_board[position] = marker
 
-def check_winner(board):
-    """Checks whether all postions are filled in the board in which case its a tie. Otherwise, Checks if the cells are empty then checks if they are the same.
-    """
-    if all(board):
-        print("TIE!")
-        return True
-
-    if board[0] and board[1] and board[2]:
-        if board[0] == board[1] == board[2]:
-            print("WINNER!")
-            return True
-
-    elif board[3] and board[4] and board[5]:
-        if board[3] == board[4] == board[5]:
-            print("WINNER!")
-            return True
-    
-    elif board[6] and board[7] and board[8]:
-        if board[6] == board[7] == board[8]:
-            print("WINNER!")
-            return True
-
-    elif board[0] and board[3] and board[6]:
-        if board[0] == board[3] == board[6]:
-            print("WINNER!")
-            return True
-
-    elif board[1] and board[4] and board[7]:
-        if board[1] == board[4] == board[7]:
-            print("WINNER!")
-            return True
-    
-    elif board[2] and board[5] and board[8]:
-        if board[2] == board[5] == board[8]:
-            print("WINNER!")
-            return True
-
-    elif board[0] and board[4] and board[8]:
-        if board[0] == board[4] == board[8]:
-            print("WINNER!")
-            return True
-    
-    elif board[2] and board[4] and board[6]:
-        if board[2] == board[4] == board[6]:
-            print("WINNER!")
-            return True
-    
-    return False
+def check_winner(board,mark):
+    return (  # across the top
+        (board[7] == mark and board[8] == mark and board[9] == mark) or  
+            # across the middle
+            (board[4] == mark and board[5] == mark and board[6] == mark) or
+            # across the bottom
+            (board[1] == mark and board[2] == mark and board[3] == mark) or
+            # down the middle
+            (board[7] == mark and board[4] == mark and board[1] == mark) or
+            # down the middle
+            (board[8] == mark and board[5] == mark and board[2] == mark) or
+            # down the right side
+            (board[9] == mark and board[6] == mark and board[3] == mark) or
+            # diagonal
+            (board[7] == mark and board[5] == mark and board[3] == mark) or
+            # diagonal
+            (board[9] == mark and board[5] == mark and board[1] == mark))  
 
 def display(board):
     print('\n'*100)
