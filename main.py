@@ -17,6 +17,20 @@ def user_input():
     return int(choice)
 
 
+def player_input():
+    """
+    OUTPUT = (Player 1 marker, Player 2 marker)
+    """
+    marker = ''
+
+    while marker not in ['X', 'O']:
+        marker = input('Player 1: choose X or O: ').upper()
+
+    if marker == 'X':
+        return ('X', 'O')
+    else:
+        return ('O', 'X')
+
 
 def update_board(game_board,user_choice ,player):
     '''Takes the game list and user choice to update the game list.'''
@@ -108,7 +122,6 @@ def display(board):
 def full_board_check(board):
     # all() returns true if there are no emptyu stings in the list
     return all(board)
-
 
 
 def replay():
