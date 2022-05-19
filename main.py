@@ -92,20 +92,35 @@ def check_winner(game_list):
     return False
 
 def display(game_list):
-    print([game_list[6] , game_list[7] , game_list[8]])
-    print([game_list[3] , game_list[4] , game_list[5]])
-    print([game_list[0] , game_list[1] , game_list[2]])
+    print('\n'*100)
+
+    print(' ' + game_list[7] + ' | ' + game_list[8] + ' | ' + game_list[9])
+
+    print('-----------')
+
+    print(' ' + game_list[4] + ' | ' + game_list[5] + ' | ' + game_list[6])
+
+    print('-----------')
+
+    print(' ' + game_list[1] + ' | ' + game_list[2] + ' | ' + game_list[3])
 
 
 def game():
     game_list = [''] * 9
     gameover= False
-    player = 'X'
+    player1 = 'X'
+    player2 = 'O'
     while not gameover:
         choice = user_input()
-        game_list = update_board(game_list, choice, player)
+        game_list = update_board(game_list, choice, player1)
         display(game_list)
-        gameover = check_winner(game_list)    
+        gameover = check_winner(game_list)   
+        if gameover:
+            break 
+        choice = user_input()
+        game_list = update_board(game_list, choice, player2)
+        display(game_list)
+        gameover = check_winner(game_list)
     replay = input("Do you wwant to play again? (Y/N)? ")
     if replay == 'Y':
         game()
