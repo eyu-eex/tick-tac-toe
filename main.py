@@ -1,3 +1,5 @@
+import random
+
 def user_input():
     '''Accepts user input within the range of (1-9).'''
     choice = ''
@@ -16,7 +18,6 @@ def user_input():
 
     return int(choice)
 
-
 def player_input():
     """
     OUTPUT = (Player 1 marker, Player 2 marker)
@@ -31,6 +32,12 @@ def player_input():
     else:
         return ('O', 'X')
 
+def choose_first():
+
+    if random.randint(1, 2) == 1:
+        return 'Player 1'
+    else:
+        return 'Player 2'
 
 def update_board(game_board,marker ,position):
     '''Takes the game list and user choice to update the game board.'''
