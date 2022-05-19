@@ -68,6 +68,9 @@ def display(board):
     print(' ' + board[1] + ' | ' + board[2] + ' | ' + board[3])
 
 
+def space_check(board, position):
+    return board[position]
+
 def full_board_check(board):
     # all() returns true if there are no emptyu stings in the list
     return all(board)
