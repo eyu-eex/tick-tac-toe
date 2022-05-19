@@ -32,29 +32,9 @@ def player_input():
         return ('O', 'X')
 
 
-def update_board(game_board,user_choice ,player):
-    '''Takes the game list and user choice to update the game list.'''
-    if user_choice == 1:
-        game_board[0] = player
-    elif user_choice == 2:
-        game_board[1] = player
-    elif user_choice == 3:
-        game_board[2] = player
-    elif user_choice == 4:
-        game_board[3] = player
-    elif user_choice == 5:
-        game_board[4] = player
-    elif user_choice == 6:
-        game_board[5] = player
-    elif user_choice == 7:
-        game_board[6] = player
-    elif user_choice == 8:
-        game_board[7] = player
-    elif user_choice == 9:
-        game_board[8] = player
-   
-
-    return game_board
+def update_board(game_board,marker ,position):
+    '''Takes the game list and user choice to update the game board.'''
+    game_board[position] = marker
 
 def check_winner(board):
     """Checks whether all postions are filled in the board in which case its a tie. Otherwise, Checks if the cells are empty then checks if they are the same.
@@ -134,7 +114,7 @@ def replay():
 
 
 def game():
-    board = [''] * 9
+    board = ['#', '', '', '', '', '', '', '', '','']
     gameover= False
     player1 = 'X'
     player2 = 'O'
