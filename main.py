@@ -13,7 +13,7 @@ def user_input():
         if not choice.isdigit():
             print('Please enter a number')
         
-        if int(choice) in acceptable_range:
+        elif int(choice) in acceptable_range:
             within_range = True
 
     return int(choice)
@@ -61,27 +61,21 @@ def check_winner(board,mark):
             # diagonal
             (board[9] == mark and board[5] == mark and board[1] == mark))  
 
-def display(board):
-    print('\n'*100)
+def display_board(game_board):
 
-    print(' ' + board[7] + ' | ' + board[8] + ' | ' + board[9])
-
-    print('-----------')
-
-    print(' ' + board[4] + ' | ' + board[5] + ' | ' + board[6])
+    print(' ' + game_board[7] + ' | ' + game_board[8] + ' | ' + game_board[9])
 
     print('-----------')
 
-    print(' ' + board[1] + ' | ' + board[2] + ' | ' + board[3])
+    print(' ' + game_board[4] + ' | ' + game_board[5] + ' | ' + game_board[6])
 
+    print('-----------')
 
-def space_check(board, position):
-    return board[position]
+    print(' ' + game_board[1] + ' | ' + game_board[2] + ' | ' + game_board[3])
 
-def full_board_check(board):
+def full_board_check(game_board):
     # all() returns true if there are no emptyu stings in the list
-    return all(board)
-
+    return all(game_board)
 
 def replay():
     choice = ''
@@ -93,24 +87,47 @@ def replay():
 
 
 def game():
-    board = ['#', '', '', '', '', '', '', '', '','']
-    gameover= False
-    player1 = 'X'
-    player2 = 'O'
-    while not gameover:
-        choice = user_input()
-        board = update_board(board, choice, player1)
-        display(board)
-        gameover = check_winner(board)   
-        if gameover:
-            break 
-        choice = user_input()
-        board = update_board(board, choice, player2)
-        display(board)
-        gameover = check_winner(board)
-    replay = input("Do you wwant to play again? (Y/N)? ")
-    if replay == 'Y':
-        game()
+    print('Welcome to Tic-Tack-Toe!')
+    while True:
+        gameover = False
+        board = ['#', '', '', '', '', '', '', '', '','']
+        player1_marker,player2_marker = player_input()
+        turn = choose_first()
+        print(turn + ' will go first')
+        
+        while not gameover:
+            if turn == 'Player 1':
+                display_board(board)
+                position = user_input()
+                update_board(board,player1_marker,position)
+                if check_winner(board,player1_marker):
+                    display_board(board)
+                    print('Player 1 WON!' )
+                    gameover = True
+                else:
+                    if full_board_check(board):
+                        print("It's a tie")
+                        gameover = True
+                    else:
+                        turn = 'Player 2'
+            else:
+                display_board(board)
+                position = user_input()
+                update_board(board, player2_marker, position)
+                if check_winner(board, player2_marker):
+                    display_board(board)
+                    print('Player 2 WON!')
+                    gameover = True
+                else:
+                    if full_board_check(board):
+                        print("It's a tie")
+                        gameover = True
+                    else:
+                        turn = 'Player 1'
+
+  
+        if not replay():
+            break
     
 game()
 
