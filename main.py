@@ -105,12 +105,21 @@ def display(board):
     print(' ' + board[1] + ' | ' + board[2] + ' | ' + board[3])
 
 
+def full_board_check(board):
+    # all() returns true if there are no emptyu stings in the list
+    return all(board)
+
+
+
 def replay():
     choice = ''
     while choice in ['X', 'Y']:
         choice = input('Do you want to play again? (Yor N): ').upper()
 
     return choice == 'Y'
+
+
+
 def game():
     board = [''] * 9
     gameover= False
